@@ -1,6 +1,10 @@
 ## Information
 
-Effort seems to bundle it's own version of DeepfakeBench, so some setup is needed. You will need to copy the `datasets` and `dataset_json` directory from your DFB installation. You can also use ln
+Effort seems to bundle it's own version of DeepfakeBench, so some specific setup is needed.
+
+## How to reproduce
+
+You will need to copy the `datasets` and `dataset_json` directory from your DFB installation. You can also use ln
 
 ```
 cd DeepfakeBench 
@@ -8,7 +12,7 @@ ln -s /path/to/your/DeepfakeBench/datasets datasets
 ln -s /path/to/your/DeepfakeBench/preprocessing/dataset_json preprocessing/dataset_json
 ```
 
-## How to reproduce
+Then edit the file `DeepfakeBench/training/config/test_config.yaml` and `DeepfakeBench/training/config/train_config.yaml` and change the `dataset_json_folder` to your absolute path top the `dataset_json` directory
 
 Their script `install.sh` broke my conda env, so I had to do this manually:
 
