@@ -1,9 +1,12 @@
 mode: train
 lmdb: False
 dry_run: false
-dataset_root_rgb: './datasets'
+# The full path to datasets directory
+dataset_root_rgb: './datasets/rgb' # this does not seem to be used in code
 lmdb_dir:  'I:\transform_2_lmdb'
-dataset_json_folder: '/Youtu_Pangu_Security_Public/youtu-pangu-public/zhiyuanyan/DeepfakeBenchv2/preprocessing/dataset_json'
+rgb_dir: ./datasets/rgb # this one is used in the code
+# The path to dataset json directory
+dataset_json_folder: '/media/domen/LOJZES/OTHER/__ai/IBB-research/SOTA_models/Effort-AIGI-Detection/DeepfakeBench/preprocessing/dataset_json'
 SWA: False
 
 # label settings

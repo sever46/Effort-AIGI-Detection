@@ -167,6 +167,7 @@ class DeepfakeAbstractBaseDataset(data.Dataset):
         if not os.path.exists(self.config['dataset_json_folder']):
            self.config['dataset_json_folder'] = self.config['dataset_json_folder'].replace('/Youtu_Pangu_Security/public', '/Youtu_Pangu_Security_Public')
         try:
+            print("DATASET:", os.path.join(self.config['dataset_json_folder'], dataset_name + '.json'))
             with open(os.path.join(self.config['dataset_json_folder'], dataset_name + '.json'), 'r') as f:
                 dataset_info = json.load(f)
         except Exception as e:
@@ -289,6 +290,14 @@ class DeepfakeAbstractBaseDataset(data.Dataset):
 
         return frame_path_list, label_list, video_name_list
 
+    def resolve_rgb_path(self,file_path):
+        if os.name=="posix":
+            file_path=file_path.replace('\\','/')
+        if os.path.isabs(file_path):
+            return file_path
+        if file_path.startswith('./'):
+            file_path=file_path[2:]
+        return os.path.join(self.config['rgb_dir'],file_path)
 
     def load_rgb(self, file_path):
         """
@@ -305,6 +314,7 @@ class DeepfakeAbstractBaseDataset(data.Dataset):
         """
         size = self.config['resolution'] # if self.mode == "train" else self.config['resolution']
         if not self.lmdb:
+            file_path=self.resolve_rgb_path(file_path)
             assert os.path.exists(file_path), f"{file_path} does not exist"
             img = cv2.imread(file_path)
 
@@ -344,6 +354,7 @@ class DeepfakeAbstractBaseDataset(data.Dataset):
         if file_path is None:
             return np.zeros((size, size, 1))
         if not self.lmdb:
+            file_path=self.resolve_rgb_path(file_path)
             if os.path.exists(file_path):
                 mask = cv2.imread(file_path, 0)
                 if mask is None:
@@ -379,6 +390,7 @@ class DeepfakeAbstractBaseDataset(data.Dataset):
         if file_path is None:
             return np.zeros((81, 2))
         if not self.lmdb:
+            file_path=self.resolve_rgb_path(file_path)
             if os.path.exists(file_path):
                 landmark = np.load(file_path)
             else:

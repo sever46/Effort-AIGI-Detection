@@ -1,8 +1,9 @@
 mode: test
 lmdb: False
-dataset_root_rgb: './datasets'
+dataset_root_rgb: './datasets/rgb'
 lmdb_dir:  'I:\transform_2_lmdb'
-dataset_json_folder: '/Youtu_Pangu_Security_Public/youtu-pangu-public/zhiyuanyan/DeepfakeBenchv2/preprocessing/dataset_json'
+rgb_dir: ./datasets/rgb
+dataset_json_folder: '/media/domen/LOJZES/OTHER/__ai/IBB-research/SOTA_models/Effort-AIGI-Detection/DeepfakeBench/preprocessing/dataset_json'
 
 # label settings
 label_dict:

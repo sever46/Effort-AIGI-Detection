@@ -1,0 +1,15 @@
+DeepfakeBench/checkpoints/*
+DeepfakeBench/datasets
+DeepfakeBench/logs/*
+DeepfakeBench/preprocessing/dataset_json
+DeepfakeBench/training/__pycache__/
+DeepfakeBench/training/dataset/__pycache__/
+DeepfakeBench/training/detectors/__pycache__/
+DeepfakeBench/training/loss/__pycache__/
+DeepfakeBench/training/metrics/__pycache__/
+DeepfakeBench/training/networks/__pycache__/
+DeepfakeBench/training/optimizor/__pycache__/
+DeepfakeBench/training/trainer/__pycache__/
+DeepfakeBench/training/utils/__pycache__/
+DeepfakeBench/zhiyuanyan/
+models--openai--clip-vit-large-patch14/*

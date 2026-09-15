@@ -32,9 +32,15 @@ from optimizor.LinearLR import LinearDecayLR
 from trainer.trainer import Trainer
 from detectors import DETECTOR
 from dataset import *
+from dataset.abstract_dataset import DeepfakeAbstractBaseDataset
 from metrics.utils import parse_metric_for_print
-from logger import create_logger, RankFilter
+from logger import create_logger#, RankFilter
 
+# SUPPRESS warnings
+import warnings
+from sklearn.exceptions import UndefinedMetricWarning
+warnings.filterwarnings("ignore",category=UndefinedMetricWarning)
+# end
 
 parser = argparse.ArgumentParser(description='Process some paths.')
 parser.add_argument('--detector_path', type=str,
