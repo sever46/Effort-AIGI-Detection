@@ -1,3 +1,36 @@
+## Information
+
+Effort seems to bundle it's own version of DeepfakeBench, so some setup is needed. You will need to copy the `datasets` and `dataset_json` directory from your DFB installation. You can also use ln
+
+```
+cd DeepfakeBench 
+ln -s /path/to/your/DeepfakeBench/datasets datasets
+ln -s /path/to/your/DeepfakeBench/preprocessing/dataset_json preprocessing/dataset_json
+```
+
+## How to reproduce
+
+Their script `install.sh` broke my conda env, so I had to do this manually:
+
+`python -m pip install loralib transformers`
+
+run the setup.sh to download and extract the base model. download the best checkpoint from the releases:
+
+[link](https://github.com/sever46/Effort-AIGI-Detection/releases/download/0.1/effort_ckpt_best.pth.tar.xz)
+
+extract the pth file. Then cd to the DeepfakeBench directory and run the following code:
+
+```
+python3 training/test.py \
+    --detector_path ./training/config/detector/effort_test32.yaml \
+    --test_dataset Celeb-DF-v2 DFDC DFDCP \
+    --weights_path "<WEIGHTS>"
+```
+
+replace the `<WEIGHTS>` with the extracted pth file path. This should reproduce the results.
+
+---
+
 # Effort: Orthogonal Subspace Decomposition for Generalizable AI-Generated Image Detection ([Paper](https://arxiv.org/abs/2411.15633); [Checkpoints](https://drive.google.com/drive/folders/19kQwGDjF18uk78EnnypxxOLaG4Aa4v1h?usp=sharing))
 
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC_BY--NC_4.0-brightgreen.svg)](https://creativecommons.org/licenses/by-nc/4.0/) ![Release .10](https://img.shields.io/badge/Release-1.0-brightgreen) ![PyTorch](https://img.shields.io/badge/PyTorch-1.11-brightgreen) ![Python](https://img.shields.io/badge/Python-3.7.2-brightgreen)
